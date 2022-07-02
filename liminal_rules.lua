@@ -1,9 +1,12 @@
+local constants = require"constants"
+local libs = constants.libs
+
 return {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
+      properties = { border_width = libs.beautiful.border_width,
+                     border_color = libs.beautiful.border_normal,
+                     focus = libs.awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
