@@ -10,7 +10,7 @@ local globalkeys = libs.gears.table.join(
         {description = "open a terminal", group = "launcher"}),
 
     libs.awful.key({const.super}, "r", function() 
-        libs.awful.util.spawn("cd ~/.config/awesome && gh repo sync") 
+        libs.awful.util.spawn("cd "..const.workspace.." && gh repo sync") 
         awesome.restart()
     end, {description = "reload awesome", group = "awesome"}),
 
