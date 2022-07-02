@@ -1,3 +1,5 @@
+-- Don't require this module in constants or stack overflow
+
 local const = require"constants"
 local libs = constants.libs
 

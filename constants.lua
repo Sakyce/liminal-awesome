@@ -16,6 +16,4 @@ constants.editor = os.getenv("EDITOR") or "nano"
 constants.editor_cmd = terminal .. " -e " .. editor
 constants.super = "Mod4"
 
-constants.globalkeys = require"keybindings"
-
 return constants

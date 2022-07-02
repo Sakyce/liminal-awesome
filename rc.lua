@@ -34,4 +34,4 @@ libs.awful.screen.connect_for_each_screen(function(s)
 
 end)
 
-root.keys(constants.globalkeys)
+root.keys( require"keybindings" )
