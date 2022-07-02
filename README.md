@@ -1,6 +1,8 @@
 # liminal-awesome
 Basic configurations and theme for AwesomeWM 
 
+**IT'S IN DEVELOPMENT, IF YOU FIND THIS REPO DON'T USE IT**
+
 # Installation
 
 First, install dependencies:
@@ -15,7 +17,7 @@ Remove your old awesome config.
 sudo rm -r .config/awesome
 ```
 
-Clone  
+Clone the repository
 ```
-gh repo clone Sakyce/liminal-awesome .config/awesome
+gh repo clone Sakyce/liminal-awesome ~/.config/awesome
 ```
