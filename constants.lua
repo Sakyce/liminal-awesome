@@ -13,7 +13,7 @@ constants.libs = libs
 
 constants.terminal = "xfce4-terminal"
 constants.editor = os.getenv("EDITOR") or "nano"
-constants.editor_cmd = terminal .. " -e " .. editor
+constants.editor_cmd = constants.terminal .. " -e " .. constants.editor
 constants.super = "Mod4"
 constants.workspace = "~/.config/awesome/"
 

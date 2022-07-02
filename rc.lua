@@ -10,7 +10,7 @@ require("awful.hotkeys_popup.keys") -- Enable hotkeys help widget for VIM
 
 require("error_handler") -- Handle error
 
-libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
+--libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 libs.awful.screen.connect_for_each_screen(function(s)
 
@@ -34,6 +34,6 @@ libs.awful.screen.connect_for_each_screen(function(s)
 
 end)
 
-root.keys( require"keybindings" )
+--root.keys( require"keybindings" )
 
 libs.awful.spawn("aplay "..constants.workspace.."sounds/startup.wav")
