@@ -34,6 +34,24 @@ libs.awful.screen.connect_for_each_screen(function(s)
 --     }
 end)
 
+screen.connect_signal("request::wallpaper", function(s)
+    awful.wallpaper {
+        screen = s,
+        widget = {
+            {
+                image     = beautiful.wallpaper,
+                upscale   = true,
+                downscale = true,
+                widget    = libs.wibox.widget.imagebox,
+            },
+            valign = "center",
+            halign = "center",
+            tiled  = false,
+            widget = libs.wibox.container.tile,
+        }
+    }
+end)
+
 --root.keys( require"keybindings" )
 
 libs.awful.spawn("aplay "..constants.workspace.."sounds/startup.wav")
