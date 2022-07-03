@@ -3,33 +3,21 @@
 local const = require"constants"
 local libs = const.libs
 
-local globalkeys = libs.gears.table.join(
+local current_theme = require"mythemes"
 
+libs.awful.keyboard.append_global_keybindings{
     -- Standard program
     libs.awful.key({const.super}, "Return", function () libs.awful.spawn(const.terminal) end,
         {description = "open a terminal", group = "launcher"}),
 
     libs.awful.key({const.super}, "r", function() 
-        libs.awful.util.spawn("cd "..const.workspace.." && gh repo sync") 
-        awesome.restart()
+        current_theme.play('logout')
+        -- Update the repo and log out
+        libs.awful.spawn.easy_async("sh "..const.workspace.."update_awesome.sh", function()
+            awesome.restart()
+        end)
     end, {description = "reload awesome", group = "awesome"}),
 
     libs.awful.key({const.super}, "q", awesome.quit,
-        {description = "quit awesome", group = "awesome"}),
-
-    -- Prompt
-    libs.awful.key({const.super}, "r", function()
-        libs.awful.screen.focused().mypromptbox:run() 
-    end, {description = "run prompt", group = "launcher"}),
-
-    libs.awful.key({const.super}, "x",function()
-        libs.awful.prompt.run {
-            prompt       = "Run Lua code: ",
-            textbox      = libs.awful.screen.focused().mypromptbox.widget,
-            exe_callback = libs.awful.util.eval,
-            history_path = libs.awful.util.get_cache_dir() .. "/history_eval"
-        }
-    end, {description = "lua execute prompt", group = "awesome"})
-)
-
-return globalkeys
+        {description = "quit awesome", group = "awesome"})
+}

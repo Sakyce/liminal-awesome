@@ -14,13 +14,12 @@ libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua
 
 local current_theme = require("mythemes").Chicago
 
+-- Screen layouts
 local suit = libs.awful.layout.suit
-
 libs.awful.layout.layouts = {
     suit.floating, suit.tile, suit.tile.left, suit.tile.bottom, suit.tile.top, suit.fair, suit.fair.horizontal, 
     suit.spiral, suit.spiral.dwindle, suit.max, suit.max.fullscreen, suit.magnifier, suit.corner.nw,
 }
-
 local function set_wallpaper(s)
     if libs.beautiful.wallpaper then
         
@@ -32,7 +31,6 @@ local function set_wallpaper(s)
     end
 end
 screen.connect_signal("property::geometry", set_wallpaper)
-
 libs.awful.screen.connect_for_each_screen(function(scr)
     set_wallpaper(scr)
     
@@ -43,7 +41,6 @@ libs.awful.screen.connect_for_each_screen(function(scr)
 
     --scr.mywibox:setup{}
 end)
-
 screen.connect_signal("request::wallpaper", function(s)
     libs.awful.wallpaper {
         screen = s,
@@ -64,14 +61,14 @@ end)
 
 -- Window managing
 client.connect_signal("manage", function(window)
+    current_theme.play( "window_open" )
     libs.awful.placement.no_offscreen(window)
 end)
--- client.connect_signal("request::titlebars", function(window)
---     libs.awful.titlebar(window):setup{  }
--- end)
+client.connect_signal("unmanage", function(window)
+    current_theme.play( "window_close" )
+end)
 
+-- Keybindings
+require"keybindings"
 
---root.keys( require"keybindings" )
-
-libs.awful.spawn( constants.terminal, {floating = true} )
-libs.awful.spawn( "aplay "..constants.workspace..current_theme.startup_sound )
+current_theme.play( "startup_sound" )

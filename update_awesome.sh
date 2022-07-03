@@ -1,6 +1,6 @@
-# Clone repo
-sudo rm -r .config/awesome
-gh repo clone Sakyce/liminal-awesome .config/awesome
+# Reclone the repo
+rm -r ~/.config/awesome -f
+gh repo clone Sakyce/liminal-awesome ~/.config/awesome
 
-# sync repo
-cd .config/awesome && gh repo sync
+echo 'synced repo'
+echo ''
