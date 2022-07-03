@@ -8,7 +8,8 @@ local current_theme = require"mythemes"
 local wmkeys = libs.gears.table.join(
     -- Standard program
     libs.awful.key({const.super}, "Return", function () 
-        libs.awful.spawn(const.terminal, {floating=true}) 
+        libs.awful.spawn(const.terminal, {floating=true})
+        current_theme.play('logout')
     end,
         {description = "open a terminal", group = "launcher"}),
 

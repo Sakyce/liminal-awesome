@@ -59,9 +59,7 @@ client.connect_signal("manage", function(window)
     mytheme.play( "window_open" )
     libs.awful.placement.no_offscreen(window)
 end)
-client.connect_signal("unmanage", function(window)
-    mytheme.play( "window_close" )
-end)
+client.connect_signal("unmanage", function(window) mytheme.play( "window_close" ) end)
 client.connect_signal("request::titlebars", function(window)
     local buttons = libs.gears.table.join(
         libs.awful.button({ }, 1, function()
@@ -74,25 +72,25 @@ client.connect_signal("request::titlebars", function(window)
         end)
     )
     
-    libs.awful.titlebar(window, {height=400,bg='#11111100'}):setup{
+    libs.awful.titlebar(window, {height=60,bg='#11111100'}):setup{
     -- Left
     {
         libs.awful.titlebar.widget.closebutton(window),
         libs.awful.titlebar.widget.iconwidget(window),
         {align  = "left", widget = libs.awful.titlebar.widget.titlewidget(window)},
-        layout  = libs.wibox.layout.fixed.horizontal
+        --layout  = libs.wibox.layout.fixed.horizontal
     },
     -- Middle
     {
         buttons = buttons,
-        layout  = libs.wibox.layout.flex.horizontal
+        --layout  = libs.wibox.layout.flex.horizontal
     },
     -- Right
     {   
         buttons = buttons,
-        layout = libs.wibox.layout.fixed.horizontal()
+        --layout = libs.wibox.layout.fixed.horizontal()
     },
-    layout = libs.wibox.layout.align.horizontal
+    --layout = libs.wibox.layout.align.horizontal
     }
 end)
 
