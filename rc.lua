@@ -13,7 +13,7 @@ require("error_handler") -- Handle error
 libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 local function set_wallpaper(s)
-    if beautiful.wallpaper then
+    if libs.beautiful.wallpaper then
         local wallpaper = beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
         if type(wallpaper) == "function" then
@@ -38,7 +38,7 @@ screen.connect_signal("request::wallpaper", function(s)
         screen = s,
         widget = {
             {
-                image     = beautiful.wallpaper,
+                image     = libs.beautiful.wallpaper,
                 upscale   = true,
                 downscale = true,
                 widget    = libs.wibox.widget.imagebox,
