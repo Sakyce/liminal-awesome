@@ -26,6 +26,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 libs.awful.screen.connect_for_each_screen(function(scr)
     set_wallpaper(scr)
+    --libs.awful.tag( {"1"}, scr, libs.awful.layout.layouts[1] )
 
     -- create objects
     
@@ -62,6 +63,6 @@ end)
 
 --root.keys( require"keybindings" )
 
-libs.awful.spawn( "aplay "..constants.workspace.."sounds/startup.wav" )
+libs.awful.spawn( constants.terminal, {floating = true} )
 libs.awful.spawn( "firefox", {floating = true} )
-libs.awful.spawn( constants.terminal )
+libs.awful.spawn( "aplay "..constants.workspace.."sounds/startup.wav" )
