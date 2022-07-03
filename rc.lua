@@ -11,6 +11,12 @@ require("awful.hotkeys_popup.keys") -- Enable hotkeys help widget for VIM
 require("error_handler") -- Handle error
 
 libs.beautiful.init(libs.gears.filesystem.get_themes_dir().."default/theme.lua")
+libs.beautiful.titlebar_bgimage = constants.workspace.."art/titlebar.png"
+libs.beautiful.border_width     = 0
+libs.beautiful.border_normal    = "#11111100"
+libs.beautiful.border_focus     = "#11111100"
+libs.beautiful.border_marked    = "#11111100"
+libs.beautiful.border           = "#11111100"
 
 local mytheme = require("mythemes")
 
@@ -93,13 +99,6 @@ client.connect_signal("request::titlebars", function(window)
     layout = libs.wibox.layout.align.horizontal
     }
 end)
-
-libs.beautiful.titlebar_bgimage = constants.workspace.."art/titlebar.png"
-libs.beautiful.border_width     = 0
-libs.beautiful.border_normal    = "#11111100"
-libs.beautiful.border_focus     = "#11111100"
-libs.beautiful.border_marked    = "#11111100"
-libs.beautiful.border           = "#11111100"
 
 -- Keybindings
 require"keybindings"
