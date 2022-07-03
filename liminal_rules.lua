@@ -8,8 +8,8 @@ return {
                      border_color = libs.beautiful.border_normal,
                      focus = libs.awful.client.focus.filter,
                      raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
+                     --keys = clientkeys,
+                     --buttons = clientbuttons,
                      screen = libs.awful.screen.preferred,
                      placement = libs.awful.placement.no_overlap+libs.awful.placement.no_offscreen
      }

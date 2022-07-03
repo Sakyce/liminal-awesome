@@ -33,13 +33,7 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 libs.awful.screen.connect_for_each_screen(function(scr)
     set_wallpaper(scr)
-    
     libs.awful.tag( {"1"}, scr, libs.awful.layout.layouts[1] )
-
-    -- create objects
-    
-
-    --scr.mywibox:setup{}
 end)
 screen.connect_signal("request::wallpaper", function(s)
     libs.awful.wallpaper {
@@ -60,6 +54,7 @@ screen.connect_signal("request::wallpaper", function(s)
 end)
 
 -- Window managing
+libs.awful.rules.rules = require"liminal_rules"
 client.connect_signal("manage", function(window)
     mytheme.play( "window_open" )
     libs.awful.placement.no_offscreen(window)
