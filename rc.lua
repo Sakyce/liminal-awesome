@@ -16,7 +16,7 @@ local current_theme = require("mythemes").Chicago
 
 local suit = libs.awful.layout.suit
 
-libs.awful.layout.layouts{
+libs.awful.layout.layouts = {
     suit.floating, suit.tile, suit.tile.left, suit.tile.bottom, suit.tile.top, suit.fair, suit.fair.horizontal, 
     suit.spiral, suit.spiral.dwindle, suit.max, suit.max.fullscreen, suit.magnifier, suit.corner.nw,
 }
