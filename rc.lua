@@ -95,7 +95,11 @@ client.connect_signal("request::titlebars", function(window)
 end)
 
 libs.beautiful.titlebar_bgimage = constants.workspace.."art/titlebar.png"
-libs.beautiful.border_width  = 0
+libs.beautiful.border_width     = 0
+libs.beautiful.border_normal    = "#11111100"
+libs.beautiful.border_focus     = "#11111100"
+libs.beautiful.border_marked    = "#11111100"
+libs.beautiful.border           = "#11111100"
 
 -- Keybindings
 require"keybindings"
