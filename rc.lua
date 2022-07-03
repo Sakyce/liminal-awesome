@@ -68,14 +68,40 @@ client.connect_signal("unmanage", function(window)
     mytheme.play( "window_close" )
 end)
 client.connect_signal("request::titlebars", function(window)
+    local buttons = libs.gears.table.join(
+        libs.awful.button({ }, 1, function()
+            window:emit_signal("request::activate", "titlebar", {raise = true})
+            libs.awful.mouse.client.move(window)
+        end),
+        libs.awful.button({ }, 3, function()
+            window:emit_signal("request::activate", "titlebar", {raise = true})
+            libs.awful.mouse.client.resize(window)
+        end)
+    )
+
     libs.awful.titlebar(window):setup{
+        { -- Left
+        libs.awful.titlebar.widget.iconwidget(window),
+            buttons = buttons,
+            layout  = wibox.layout.fixed.horizontal
+        },
         { -- Middle
             { -- Title
                 align  = "center",
-                widget = libs.awful.titlebar.widget.titlewidget(c)
+                widget = libs.awful.titlebar.widget.titlewidget(window)
             },
+            buttons = buttons,
             layout  = wibox.layout.flex.horizontal
         },
+        { -- Right
+        libs.awful.titlebar.widget.floatingbutton (window),
+        libs.awful.titlebar.widget.maximizedbutton(window),
+        libs.awful.titlebar.widget.stickybutton   (window),
+        libs.awful.titlebar.widget.ontopbutton    (window),
+        libs.awful.titlebar.widget.closebutton    (window),
+            layout = wibox.layout.fixed.horizontal()
+        },
+        layout = wibox.layout.align.horizontal
     }
 end)
 
