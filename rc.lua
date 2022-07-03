@@ -12,13 +12,22 @@ require("error_handler") -- Handle error
 
 libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+local current_theme = require("mythemes").Chicago
+
+local suit = libs.awful.layout.suit
+
+libs.awful.layout.layouts{
+    suit.floating, suit.tile, suit.tile.left, suit.tile.bottom, suit.tile.top, suit.fair, suit.fair.horizontal, 
+    suit.spiral, suit.spiral.dwindle, suit.max, suit.max.fullscreen, suit.magnifier, suit.corner.nw,
+}
+
 local function set_wallpaper(s)
     if libs.beautiful.wallpaper then
         
         local wallpaper = libs.beautiful.wallpaper
         wallpaper = type(wallpaper) == "function" and wallpaper(s) or wallpaper  
         
-        libs.gears.wallpaper.maximized(constants.workspace.."art/backgrounds_01.png", s, true)
+        libs.gears.wallpaper.maximized(constants.workspace..current_theme.wallpaper, s, true)
 
     end
 end
@@ -26,7 +35,8 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 libs.awful.screen.connect_for_each_screen(function(scr)
     set_wallpaper(scr)
-    --libs.awful.tag( {"1"}, scr, libs.awful.layout.layouts[1] )
+    
+    libs.awful.tag( {"1"}, scr, libs.awful.layout.layouts[1] )
 
     -- create objects
     
@@ -65,4 +75,4 @@ end)
 
 libs.awful.spawn( constants.terminal, {floating = true} )
 libs.awful.spawn( "firefox", {floating = true} )
-libs.awful.spawn( "aplay "..constants.workspace.."sounds/startup.wav" )
+libs.awful.spawn( "aplay "..constants.workspace..current_theme.startup_sound )
