@@ -1,7 +1,8 @@
 {
     "Lua.diagnostics.globals": [
         "screen",
-        "awesome"
+        "awesome",
+        "client"
     ],
     "Lua.workspace.library": [
         "D:\\Documents\\GitHub\\liminal-awesome\\lib"

@@ -51,6 +51,15 @@ screen.connect_signal("request::wallpaper", function(s)
     }
 end)
 
+-- Window managing
+client.connect_signal("manage", function(window)
+    libs.awful.placement.no_offscreen(window)
+end)
+-- client.connect_signal("request::titlebars", function(window)
+--     libs.awful.titlebar(window):setup{  }
+-- end)
+
+
 --root.keys( require"keybindings" )
 
 libs.awful.spawn("aplay "..constants.workspace.."sounds/startup.wav")
