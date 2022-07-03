@@ -14,7 +14,7 @@ libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua
 
 local function set_wallpaper(s)
     if libs.beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
+        local wallpaper = libs.beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)
