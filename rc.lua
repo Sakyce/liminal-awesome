@@ -67,6 +67,9 @@ end)
 client.connect_signal("unmanage", function(window)
     mytheme.play( "window_close" )
 end)
+client.connect_signal("request::titlebars", function(window)
+    libs.awful.titlebar(window):setup{}
+end)
 
 -- Keybindings
 require"keybindings"

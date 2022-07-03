@@ -7,16 +7,16 @@ local current_theme = require"mythemes"
 
 local wmkeys = libs.gears.table.join(
     -- Standard program
-    libs.awful.key({const.super}, "Return", function () libs.awful.spawn(const.terminal) end,
+    libs.awful.key({const.super}, "Return", function () 
+        libs.awful.spawn(const.terminal, {fullscreen=true}) 
+    end,
         {description = "open a terminal", group = "launcher"}),
 
     libs.awful.key({const.super}, "r", function() 
         current_theme.play('logout')
         -- Update the repo and log out
-        libs.awful.spawn.easy_async("xfce4-terminal --command='sh "..const.workspace.."update_awesome.sh'", function()
-            current_theme.play('logout')
-            awesome.restart()
-        end)
+        libs.awful.spawn.easy_async("xfce4-terminal --command='sh "..const.workspace.."update_awesome.sh'")
+    
     end, {description = "reload awesome", group = "awesome"}),
 
     libs.awful.key({const.super}, "q", awesome.quit,
