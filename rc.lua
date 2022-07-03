@@ -73,30 +73,27 @@ client.connect_signal("request::titlebars", function(window)
             libs.awful.mouse.client.resize(window)
         end)
     )
-
+    
     libs.awful.titlebar(window):setup{
-        { -- Left
+    -- Left
+    {
         libs.awful.titlebar.widget.iconwidget(window),
-            buttons = buttons,
-            layout  = libs.wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = libs.awful.titlebar.widget.titlewidget(window)
-            },
-            buttons = buttons,
-            layout  = libs.wibox.layout.flex.horizontal
-        },
-        { -- Right
-        libs.awful.titlebar.widget.floatingbutton (window),
-        libs.awful.titlebar.widget.maximizedbutton(window),
-        libs.awful.titlebar.widget.stickybutton   (window),
-        libs.awful.titlebar.widget.ontopbutton    (window),
+        buttons = buttons,
+        layout  = libs.wibox.layout.fixed.horizontal
+    },
+    -- Middle
+    {
+        -- Title
+        {align  = "center", widget = libs.awful.titlebar.widget.titlewidget(window)},
+        buttons = buttons,
+        layout  = libs.wibox.layout.flex.horizontal
+    },
+    -- Right
+    {
         libs.awful.titlebar.widget.closebutton    (window),
-            layout = libs.wibox.layout.fixed.horizontal()
-        },
-        layout = libs.wibox.layout.align.horizontal
+        layout = libs.wibox.layout.fixed.horizontal()
+    },
+    layout = libs.wibox.layout.align.horizontal
     }
 end)
 
