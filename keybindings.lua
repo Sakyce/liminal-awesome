@@ -5,7 +5,7 @@ local libs = const.libs
 
 local current_theme = require"mythemes"
 
-libs.awful.keyboard.append_global_keybindings{
+local wmkeys = libs.gears.table.join(
     -- Standard program
     libs.awful.key({const.super}, "Return", function () libs.awful.spawn(const.terminal) end,
         {description = "open a terminal", group = "launcher"}),
@@ -20,4 +20,6 @@ libs.awful.keyboard.append_global_keybindings{
 
     libs.awful.key({const.super}, "q", awesome.quit,
         {description = "quit awesome", group = "awesome"})
-}
+)
+
+root.keys(wmkeys)
