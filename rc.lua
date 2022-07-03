@@ -12,30 +12,29 @@ require("error_handler") -- Handle error
 
 libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
-libs.awful.screen.connect_for_each_screen(function(s)
+local function set_wallpaper(s)
+    if beautiful.wallpaper then
+        local wallpaper = beautiful.wallpaper
+        -- If wallpaper is a function, call it with the screen
+        if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+        end
+        libs.gears.wallpaper.maximized(wallpaper, s, true)
+    end
+end
+screen.connect_signal("property::geometry", set_wallpaper)
+
+libs.awful.screen.connect_for_each_screen(function(scr)
+    set_wallpaper(scr)
+
+    -- create objects
     
 
---     -- Add widgets to the wibox
---     s.mywibox:setup{
---         layout = libs.wibox.layout.align.horizontal,
---         { -- Left widgets
---             layout = libs.wibox.layout.fixed.horizontal,
---             mylauncher,
---             s.mytaglist,
---             s.mypromptbox,
---         },
---         { -- Right widgets
---             layout = libs.wibox.layout.fixed.horizontal,
---             mykeyboardlayout,
---             libs.wibox.widget.systray(),
---             mytextclock,
---             s.mylayoutbox,
---         },
---     }
+    scr.mywibox:setup{}
 end)
 
 screen.connect_signal("request::wallpaper", function(s)
-    awful.wallpaper {
+    libs.awful.wallpaper {
         screen = s,
         widget = {
             {
