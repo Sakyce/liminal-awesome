@@ -16,7 +16,7 @@ local function set_wallpaper(s)
     if libs.beautiful.wallpaper then
         
         local wallpaper = libs.beautiful.wallpaper
-        local wallpaper = type(wallpaper) == "function" and wallpaper(s) or wallpaper  
+        wallpaper = type(wallpaper) == "function" and wallpaper(s) or wallpaper  
         
         libs.gears.wallpaper.maximized(constants.workspace.."art/backgrounds_01.png", s, true)
 
@@ -25,7 +25,6 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 libs.awful.screen.connect_for_each_screen(function(scr)
-    libs.beautiful.set_wallpaper()
     set_wallpaper(scr)
 
     -- create objects
