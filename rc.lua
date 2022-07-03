@@ -12,7 +12,7 @@ require("error_handler") -- Handle error
 
 libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
-local current_theme = require("mythemes").Chicago
+local mytheme = require("mythemes")
 
 -- Screen layouts
 local suit = libs.awful.layout.suit
@@ -26,7 +26,7 @@ local function set_wallpaper(s)
         local wallpaper = libs.beautiful.wallpaper
         wallpaper = type(wallpaper) == "function" and wallpaper(s) or wallpaper  
         
-        libs.gears.wallpaper.maximized(constants.workspace..current_theme.wallpaper, s, true)
+        libs.gears.wallpaper.maximized(constants.workspace..mytheme.current_theme.wallpaper, s, true)
 
     end
 end
@@ -61,14 +61,14 @@ end)
 
 -- Window managing
 client.connect_signal("manage", function(window)
-    current_theme.play( "window_open" )
+    mytheme.play( "window_open" )
     libs.awful.placement.no_offscreen(window)
 end)
 client.connect_signal("unmanage", function(window)
-    current_theme.play( "window_close" )
+    mytheme.play( "window_close" )
 end)
 
 -- Keybindings
 require"keybindings"
 
-current_theme.play( "startup_sound" )
+mytheme.play( "startup_sound" )
