@@ -84,6 +84,7 @@ client.connect_signal("request::titlebars", function(window)
         libs.awful.titlebar.widget.closebutton(window),
         libs.awful.titlebar.widget.iconwidget(window),
         {align  = "left", widget = libs.awful.titlebar.widget.titlewidget(window)},
+        {align  = "right", widget = libs.awful.titlebar.widget.stickybutton (window)},
         layout  = libs.wibox.layout.fixed.horizontal
     },
     -- Middle
