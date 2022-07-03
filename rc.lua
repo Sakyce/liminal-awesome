@@ -10,7 +10,7 @@ require("awful.hotkeys_popup.keys") -- Enable hotkeys help widget for VIM
 
 require("error_handler") -- Handle error
 
-libs.beautiful.init(libs.gears.filesystem.get_themes_dir() .. "default/theme.lua")
+libs.beautiful.init(libs.gears.filesystem.get_themes_dir().."default/theme.lua")
 
 local mytheme = require("mythemes")
 
@@ -74,28 +74,30 @@ client.connect_signal("request::titlebars", function(window)
         end)
     )
     
-    libs.awful.titlebar(window):setup{
+    libs.awful.titlebar(window, {height=40,bg_normal='#000000'}):setup{
     -- Left
     {
+        libs.awful.titlebar.widget.closebutton(window),
         libs.awful.titlebar.widget.iconwidget(window),
+        {align  = "left", widget = libs.awful.titlebar.widget.titlewidget(window)},
         buttons = buttons,
         layout  = libs.wibox.layout.fixed.horizontal
     },
     -- Middle
     {
-        -- Title
-        {align  = "center", widget = libs.awful.titlebar.widget.titlewidget(window)},
         buttons = buttons,
         layout  = libs.wibox.layout.flex.horizontal
     },
     -- Right
-    {
-        libs.awful.titlebar.widget.closebutton    (window),
+    {   
+        buttons = buttons,
         layout = libs.wibox.layout.fixed.horizontal()
     },
     layout = libs.wibox.layout.align.horizontal
     }
 end)
+
+libs.beautiful.titlebar_bgimage = constants.workspace.."art/titlebar.png"
 
 -- Keybindings
 require"keybindings"
