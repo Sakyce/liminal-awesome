@@ -90,7 +90,7 @@ client.connect_signal("request::titlebars", function(window)
         buttons = buttons,
         --layout = libs.wibox.layout.fixed.horizontal()
     },
-    --layout = libs.wibox.layout.align.horizontal
+    layout = libs.wibox.layout.align.horizontal
     }
 end)
 
