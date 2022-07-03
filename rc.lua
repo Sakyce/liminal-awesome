@@ -74,7 +74,7 @@ client.connect_signal("request::titlebars", function(window)
         end)
     )
     
-    libs.awful.titlebar(window, {height=160,bg_normal='#000000'}):setup{
+    libs.awful.titlebar(window, {height=400,bg_normal='#000000'}):setup{
     -- Left
     {
         libs.awful.titlebar.widget.closebutton(window),
