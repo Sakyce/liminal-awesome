@@ -68,7 +68,15 @@ client.connect_signal("unmanage", function(window)
     mytheme.play( "window_close" )
 end)
 client.connect_signal("request::titlebars", function(window)
-    libs.awful.titlebar(window):setup{}
+    libs.awful.titlebar(window):setup{
+        { -- Middle
+            { -- Title
+                align  = "center",
+                widget = libs.awful.titlebar.widget.titlewidget(c)
+            },
+            layout  = wibox.layout.flex.horizontal
+        },
+    }
 end)
 
 -- Keybindings
