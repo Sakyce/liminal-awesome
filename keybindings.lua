@@ -14,6 +14,7 @@ local wmkeys = libs.gears.table.join(
         current_theme.play('logout')
         -- Update the repo and log out
         libs.awful.spawn.easy_async("xfce4-terminal --command='sh "..const.workspace.."update_awesome.sh'", function()
+            current_theme.play('logout')
             awesome.restart()
         end)
     end, {description = "reload awesome", group = "awesome"}),
