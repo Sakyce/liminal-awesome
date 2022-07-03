@@ -30,7 +30,7 @@ libs.awful.screen.connect_for_each_screen(function(scr)
     -- create objects
     
 
-    scr.mywibox:setup{}
+    --scr.mywibox:setup{}
 end)
 
 screen.connect_signal("request::wallpaper", function(s)
