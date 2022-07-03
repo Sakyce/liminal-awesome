@@ -74,7 +74,7 @@ client.connect_signal("request::titlebars", function(window)
         end)
     )
     
-    libs.awful.titlebar(window, {height=40,bg_normal='#000000'}):setup{
+    libs.awful.titlebar(window, {height=60,bg_normal='#000000'}):setup{
     -- Left
     {
         libs.awful.titlebar.widget.closebutton(window),
@@ -84,15 +84,15 @@ client.connect_signal("request::titlebars", function(window)
         layout  = libs.wibox.layout.fixed.horizontal
     },
     -- Middle
-    -- {
-    --     buttons = buttons,
-    --     layout  = libs.wibox.layout.flex.horizontal
-    -- },
-    -- -- Right
-    -- {   
-    --     buttons = buttons,
-    --     layout = libs.wibox.layout.fixed.horizontal()
-    -- },
+    {
+        buttons = buttons,
+        layout  = libs.wibox.layout.flex.horizontal
+    },
+    -- Right
+    {   
+        buttons = buttons,
+        layout = libs.wibox.layout.fixed.horizontal()
+    },
     layout = libs.wibox.layout.align.horizontal
     }
 end)
