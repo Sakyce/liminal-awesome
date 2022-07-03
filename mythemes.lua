@@ -29,7 +29,7 @@ function themes.play(name)
         return
     end
 
-    awful.spawn( "aplay "..const.workspace..themes.current_theme[name] )
+    awful.spawn( "aplay "..const.workspace..themes.current_theme[name],false )
 end
 
 return themes
