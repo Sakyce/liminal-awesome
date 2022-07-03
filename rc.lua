@@ -62,5 +62,6 @@ end)
 
 --root.keys( require"keybindings" )
 
-libs.awful.spawn("aplay "..constants.workspace.."sounds/startup.wav")
-libs.awful.spawn("firefox")
+libs.awful.spawn( "aplay "..constants.workspace.."sounds/startup.wav" )
+libs.awful.spawn( "firefox", {floating = true} )
+libs.awful.spawn( constants.terminal )
