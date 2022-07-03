@@ -13,7 +13,8 @@ themes.Hypnos = {
     startup_sound = "sounds/startup.wav",
     window_open = "sounds/openwindow.wav",
     window_close = "sounds/close.wav",
-    logout = "sounds/alert_window.wav"
+    logout = "sounds/alert_window.wav",
+    alert = "sounds/alert_window.wav"
 }
 
 --
